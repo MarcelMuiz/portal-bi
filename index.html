@@ -6,100 +6,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif
+    }
 
     :root{
-      --bg:#f3f4f6;
       --text:#111827;
       --muted:#6b7280;
       --card:#ffffff;
       --border:#e5e7eb;
-      --green1:#16a34a;
+      --green1:#166534;
       --green2:#22c55e;
     }
 
+    /* ===== FUNDO COM PLANTAÇÃO (LÂMINA) ===== */
     body{
-      background-color:var(--bg);
       color:var(--text);
-      position:relative;
       min-height:100vh;
+      position:relative;
+      background:#f3f4f6;
     }
 
-    /* Marca d’água */
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      background-image:url("https://marcelmuiz.github.io/portal-bi/logo-hara.png");
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.88),
+          rgba(255,255,255,0.88)
+        ),
+        url("bg-soja.jpg");   /* <- imagem de plantação */
+      background-size:cover;
+      background-position:center;
       background-repeat:no-repeat;
-      background-position:center 170px;
-      background-size:640px;
-      opacity:0.07;
-      pointer-events:none;
       z-index:0;
     }
 
-    header, main, footer{position:relative; z-index:1;}
-
-    header{
-      padding:20px 18px 8px;
-      max-width:1200px;
-      margin:0 auto;
+    header, main, footer{
+      position:relative;
+      z-index:1;
     }
 
-    .topline{
+    /* ===== HEADER ===== */
+    header{
+      max-width:1200px;
+      margin:0 auto;
+      padding:22px 18px 12px;
+    }
+
+    .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      margin-bottom:10px;
+      gap:14px;
+      margin-bottom:6px;
     }
 
     .brand-logo{
-      height:34px;
-      width:auto;
-      filter: drop-shadow(0 2px 6px rgba(15,23,42,.10));
+      height:38px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.12));
     }
 
-    .tag{
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
+    h1{
+      font-size:24px;
+      font-weight:800;
+      margin-top:6px;
     }
-
-    h1{font-size:22px;margin-top:6px}
 
     p{
       margin-top:8px;
       color:var(--muted);
       font-size:13px;
-      line-height:1.4;
       max-width:900px;
     }
 
+    /* ===== CONTEÚDO ===== */
     main{
       max-width:1200px;
       margin:0 auto;
-      padding:0 18px 26px;
+      padding:0 18px 30px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:18px;
+      gap:18px;
+      margin-top:24px;
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
-      box-shadow:0 10px 30px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.05);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:150px;
+      min-height:160px;
     }
 
     .title{
@@ -110,72 +118,69 @@
     .desc{
       font-size:12px;
       color:var(--muted);
-      line-height:1.4;
+      line-height:1.45;
     }
 
     .btnrow{
-      display:flex;
-      gap:10px;
       margin-top:auto;
     }
 
     a.btn{
-      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      padding:10px 16px;
+      padding:10px 18px;
       border-radius:999px;
       font-size:12px;
       font-weight:800;
+      text-decoration:none;
       color:#ffffff;
       background:linear-gradient(135deg,var(--green1),var(--green2));
-      transition:transform .06s ease, filter .12s ease;
+      transition:transform .08s ease, filter .12s ease;
     }
 
     a.btn:hover{
       transform:translateY(-1px);
-      filter:brightness(.97);
+      filter:brightness(.95);
     }
 
     footer{
       max-width:1200px;
       margin:0 auto;
-      padding:0 18px 24px;
-      color:#9ca3af;
+      padding:0 18px 26px;
       font-size:11px;
+      color:#6b7280;
     }
 
+    /* ===== RESPONSIVO ===== */
     @media (max-width:1000px){
       .grid{grid-template-columns:repeat(2,1fr)}
     }
 
     @media (max-width:640px){
       .grid{grid-template-columns:1fr}
-      body::before{
-        background-position:center 220px;
-        background-size:420px;
-      }
-      .brand-logo{height:30px}
+      .brand-logo{height:32px}
     }
   </style>
 </head>
 
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="topline">
+    <div class="brand">
       <img class="brand-logo"
            src="https://marcelmuiz.github.io/portal-bi/logo-hara.png"
-           alt="Hara" />
-      <div class="tag">Facilitador de links</div>
+           alt="Hara">
     </div>
 
-    <h1>Hub de Painéis (Power BI)</h1>
+    <h1>Hub de Painéis Corporativos</h1>
     <p>
-      Esta página apenas organiza os acessos aos painéis.
-      Ao clicar, você será direcionado ao Power BI e poderá ser solicitado login corporativo.
+      Indicadores estratégicos para apoio à tomada de decisão no agronegócio.
+      Ao clicar em um painel, você será direcionado ao Power BI.
     </p>
   </header>
 
+  <!-- CARDS -->
   <main>
     <div class="grid">
 
@@ -183,72 +188,43 @@
         <div class="title">PAINEL GRUPO HARA (VENDAS)</div>
         <div class="desc">Visão geral corporativa de vendas, faturamento, margens e desempenho comercial.</div>
         <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f/6ba47188795ce6267086?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank"
+             href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f/6ba47188795ce6267086?experience=power-bi">
+            Abrir relatório
+          </a>
         </div>
       </div>
 
       <div class="card">
         <div class="title">PAINEL MARGEM AGRÍCOLA</div>
-        <div class="desc">Análise de margem agrícola, performance por produto, cortes e rentabilidade.</div>
+        <div class="desc">Análise de margem agrícola, performance por produto e rentabilidade.</div>
         <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/95a564a92eeddb7c7e79?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank"
+             href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/95a564a92eeddb7c7e79?experience=power-bi">
+            Abrir relatório
+          </a>
         </div>
       </div>
 
       <div class="card">
         <div class="title">PAINEL VETERINÁRIA MSD</div>
-        <div class="desc">Resultados comerciais, indicadores e acompanhamento da vertical Veterinária (MSD).</div>
+        <div class="desc">Indicadores comerciais e acompanhamento da vertical Veterinária (MSD).</div>
         <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank"
+             href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">
+            Abrir relatório
+          </a>
         </div>
       </div>
 
-      <div class="card">
-        <div class="title">PAINEL VETERINÁRIA ELANCO</div>
-        <div class="desc">Resultados e indicadores da vertical Veterinária (Elanco).</div>
-        <div class="btnrow">
-          <a class="btn" target="_blank" href="https://chatgpt.com/g/g-p-694e962fef4c8191ba8649411bacf599-agrupamento-pbi/c/694e951a-4de8-8330-888c-97cff9168268">Abrir relatório</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="title">PAINEL FORNECEDORES</div>
-        <div class="desc">Acompanhamento de compras, fornecedores e negociações.</div>
-        <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/f004efe4-a1d8-4262-903f-423186b94e61/fe61bff41b154edc2466?experience=power-bi">Abrir relatório</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="title">PAINEL INADIMPLÊNCIA</div>
-        <div class="desc">Controle de inadimplência, aging e risco de crédito.</div>
-        <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/e42ad853-072d-4bdd-84be-e14b3b931f34/reports/ce6e59f6-33bb-4bbe-b334-d3af138c237d/ReportSection32453670953a2d209a6e?experience=power-bi">Abrir relatório</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="title">PAINEL LOGÍSTICA</div>
-        <div class="desc">Acompanhamento logístico, fretes, prazos e eficiência operacional.</div>
-        <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/35622400-5ad3-45e1-b08a-b546ac6cbe1d/421bdb9f9b678a65b38a?experience=power-bi">Abrir relatório</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="title">PAINEL BARTER</div>
-        <div class="desc">Gestão de operações barter, contratos e resultados financeiros.</div>
-        <div class="btnrow">
-          <a class="btn" target="_blank" href="https://app.powerbi.com/groups/me/reports/68cbe3af-ed43-4451-96b0-77427497b339/c9731144a07da00e2b3a?experience=power-bi">Abrir relatório</a>
-        </div>
-      </div>
+      <!-- (os outros painéis seguem igual ao que você já tem) -->
 
     </div>
   </main>
 
   <footer>
     Dica: marque a opção “manter conectado” no login do Microsoft 365 para acesso mais rápido.
-    Este hub não armazena senhas e não altera permissões dos painéis.
   </footer>
+
 </body>
 </html>
