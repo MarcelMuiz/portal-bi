@@ -4,72 +4,126 @@
   <meta charset="UTF-8" />
   <title>Hub de Painéis - Power BI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 
-    /* Fundo + lâmina (logo) */
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif
+    }
+
+    /* Fundo + lâmina da marca */
     body{
       background-color:#f3f4f6;
       color:#111827;
       position:relative;
       min-height:100vh;
     }
+
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      background-image:url("logo-hara.png"); /* <- coloque sua logo na raiz com esse nome */
+      background-image:url("./logo-hara.png");
       background-repeat:no-repeat;
       background-position:center 140px;
       background-size:520px;
-      opacity:0.06;              /* intensidade da lâmina (0.03 a 0.10 costuma ficar bom) */
+      opacity:0.06;
       pointer-events:none;
       z-index:0;
     }
-    header, main, footer{position:relative; z-index:1;}
 
-    header{padding:22px 18px;max-width:1100px;margin:0 auto}
-    .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
-    h1{font-size:22px;margin-top:6px}
-    p{margin-top:8px;color:#6b7280;font-size:13px;line-height:1.4}
+    header, main, footer{
+      position:relative;
+      z-index:1;
+    }
 
-    main{max-width:1100px;margin:0 auto;padding:0 18px 26px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    header{
+      padding:22px 18px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .tag{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#6b7280;
+    }
+
+    h1{
+      font-size:22px;
+      margin-top:6px;
+    }
+
+    p{
+      margin-top:8px;
+      color:#6b7280;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 18px 26px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
 
     .card{
-      background:#fff;
+      background:#ffffff;
       border:1px solid #e5e7eb;
       border-radius:16px;
-      padding:14px;
-      box-shadow:0 10px 30px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.05);
+      padding:16px;
+      box-shadow:
+        0 10px 30px rgba(15,23,42,.06),
+        0 1px 2px rgba(15,23,42,.05);
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height:140px;
+      min-height:150px;
     }
-    .title{font-weight:650}
-    .desc{font-size:12px;color:#6b7280;line-height:1.4}
-    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+
+    .title{
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .desc{
+      font-size:12px;
+      color:#6b7280;
+      line-height:1.4;
+    }
+
+    .btnrow{
+      display:flex;
+      gap:10px;
+      margin-top:auto;
+    }
 
     a.btn{
       text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:10px 14px;
+      padding:10px 16px;
       border-radius:999px;
-      border:1px solid #d1d5db;
-      background:#f9fafb;
-      color:#111827;
       font-size:12px;
-      font-weight:650;
+      font-weight:700;
+      color:#ffffff;
+      background:linear-gradient(135deg,#16a34a,#22c55e);
       transition:transform .06s ease, filter .12s ease;
     }
-    a.btn:hover{transform:translateY(-1px); filter:brightness(0.98);}
-    a.btn.primary{
-      border:none;
-      color:#fff;
-      background:linear-gradient(135deg,#16a34a,#22c55e);
+
+    a.btn:hover{
+      transform:translateY(-1px);
+      filter:brightness(.97);
     }
 
     footer{
@@ -77,56 +131,72 @@
       margin:0 auto;
       padding:0 18px 24px;
       color:#9ca3af;
-      font-size:11px
+      font-size:11px;
     }
 
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+
     @media (max-width:640px){
       .grid{grid-template-columns:1fr}
-      body::before{background-position:center 180px; background-size:420px;}
+      body::before{
+        background-position:center 180px;
+        background-size:420px;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="tag">Facilitador de links</div>
     <h1>Hub de Painéis (Power BI)</h1>
     <p>
-      Esta página só organiza os acessos. Ao clicar, você será direcionado ao Power BI.
-      Se você já estiver logado, abre direto; caso contrário, o Power BI vai pedir login.
+      Esta página apenas organiza os acessos aos painéis.
+      Ao clicar, você será direcionado ao Power BI e poderá ser solicitado login corporativo.
     </p>
   </header>
 
   <main>
     <div class="grid">
 
+      <!-- PAINEL GRUPO HARA (VENDAS) -->
       <div class="card">
-        <div class="title">PBI_GRUPO_HARA</div>
-        <div class="desc">Visão geral corporativa / consolidado.</div>
+        <div class="title">PAINEL GRUPO HARA (VENDAS)</div>
+        <div class="desc">
+          Visão geral corporativa de vendas, faturamento, margens e desempenho comercial.
+        </div>
         <div class="btnrow">
-          <a class="btn primary" target="_blank" rel="noopener"
+          <a class="btn" target="_blank" rel="noopener"
              href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f?experience=power-bi">
             Abrir relatório
           </a>
         </div>
       </div>
 
+      <!-- PAINEL MARGEM AGRÍCOLA -->
       <div class="card">
-        <div class="title">PBI_MARGEM_AGRICOLA</div>
-        <div class="desc">Margem agrícola, performance e cortes.</div>
+        <div class="title">PAINEL MARGEM AGRÍCOLA</div>
+        <div class="desc">
+          Análise de margem agrícola, performance por produto, cortes e rentabilidade.
+        </div>
         <div class="btnrow">
-          <a class="btn primary" target="_blank" rel="noopener"
+          <a class="btn" target="_blank" rel="noopener"
              href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/c6355af6a11d49695201?experience=power-bi">
             Abrir relatório
           </a>
         </div>
       </div>
 
+      <!-- PAINEL VETERINÁRIA MSD -->
       <div class="card">
-        <div class="title">PBI_VET_MSD</div>
-        <div class="desc">Resultados da vertical Vet / MSD.</div>
+        <div class="title">PAINEL VETERINÁRIA MSD</div>
+        <div class="desc">
+          Resultados comerciais, indicadores e acompanhamento da vertical Veterinária (MSD).
+        </div>
         <div class="btnrow">
-          <a class="btn primary" target="_blank" rel="noopener"
+          <a class="btn" target="_blank" rel="noopener"
              href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">
             Abrir relatório
           </a>
@@ -137,8 +207,8 @@
   </main>
 
   <footer>
-    Dica: para reduzir atrito, oriente o time a marcar “manter conectado” no login do Microsoft 365.
-    Este hub não guarda senhas e não altera permissões.
+    Dica: marque a opção “manter conectado” no login do Microsoft 365 para acesso mais rápido.
+    Este hub não armazena senhas e não altera permissões dos painéis.
   </footer>
 </body>
 </html>
