@@ -2,471 +2,91 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Portal de Indicadores - Power BI</title>
+  <title>Hub de Painéis - Power BI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+    body{background:#f3f4f6;color:#111827}
+    header{padding:22px 18px;max-width:1100px;margin:0 auto}
+    .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
+    h1{font-size:22px;margin-top:6px}
+    p{margin-top:8px;color:#6b7280;font-size:13px;line-height:1.4}
+    main{max-width:1100px;margin:0 auto;padding:0 18px 26px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .card{
+      background:#fff;border:1px solid #e5e7eb;border-radius:16px;
+      padding:14px;box-shadow:0 10px 30px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.05);
+      display:flex;flex-direction:column;gap:10px;min-height:140px
     }
-
-    body {
-      background: #f3f4f6;
-      color: #111827;
+    .title{font-weight:650}
+    .desc{font-size:12px;color:#6b7280;line-height:1.4}
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+    a.btn{
+      text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:999px;border:1px solid #d1d5db;
+      background:#f9fafb;color:#111827;font-size:12px;font-weight:600
     }
-
-    .app {
-      display: flex;
-      min-height: 100vh;
+    a.btn.primary{
+      border:none;color:#fff;background:linear-gradient(135deg,#16a34a,#22c55e);
     }
-
-    /* Sidebar */
-    .sidebar {
-      width: 280px;
-      background: #111827;
-      color: #f9fafb;
-      display: flex;
-      flex-direction: column;
-      padding: 20px 18px;
-    }
-
-    .logo-area {
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(249, 250, 251, 0.08);
-    }
-
-    .logo-tag {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 4px;
-    }
-
-    .logo-title {
-      font-size: 18px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-badge {
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: white;
-    }
-
-    .logo-subtitle {
-      font-size: 12px;
-      color: #9ca3af;
-      margin-top: 6px;
-    }
-
-    .section-title {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 8px;
-      margin-top: 16px;
-    }
-
-    .report-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .report-btn {
-      width: 100%;
-      text-align: left;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background: transparent;
-      color: #e5e7eb;
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      transition: background 0.15s ease, transform 0.05s ease;
-    }
-
-    .report-btn:hover {
-      background: rgba(55, 65, 81, 0.75);
-      transform: translateY(-1px);
-    }
-
-    .report-btn.active {
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-      color: white;
-    }
-
-    .report-title {
-      font-weight: 500;
-    }
-
-    .report-desc {
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .report-btn.active .report-desc {
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      font-size: 11px;
-      color: #6b7280;
-      border-top: 1px solid rgba(55, 65, 81, 0.7);
-      padding-top: 10px;
-    }
-
-    .sidebar-footer span {
-      display: block;
-    }
-
-    /* Main / conteúdo */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 16px 18px;
-      gap: 12px;
-    }
-
-    .main-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .main-titles {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .main-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    .main-subtitle {
-      font-size: 12px;
-      color: #6b7280;
-    }
-
-    .pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #dcfce7;
-      color: #166534;
-      font-size: 11px;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 10px;
-      box-shadow:
-        0 10px 30px rgba(15, 23, 42, 0.07),
-        0 1px 2px rgba(15, 23, 42, 0.05);
-      border: 1px solid #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      height: calc(100vh - 80px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 0 2px;
-    }
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: #111827;
-    }
-
-    .card-subtitle {
-      font-size: 11px;
-      color: #6b7280;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .card-btn {
-      border-radius: 999px;
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
-      padding: 6px 10px;
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .card-btn span {
-      font-size: 14px;
-    }
-
-    .iframe-wrapper {
-      flex: 1;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #e5e7eb;
-      background: #111827;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Responsivo: sidebar vira topo em telas menores */
-    @media (max-width: 900px) {
-      .app {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        flex-direction: column;
-      }
-
-      .main {
-        padding-top: 10px;
-      }
-
-      .card {
-        height: calc(100vh - 220px);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .sidebar {
-        padding: 14px 12px;
-      }
-
-      .logo-title {
-        font-size: 16px;
-      }
-
-      .report-btn {
-        padding: 8px 10px;
-      }
-
-      .card {
-        height: auto;
-        min-height: 420px;
-      }
-
-      .iframe-wrapper {
-        height: 360px;
-      }
-    }
+    footer{max-width:1100px;margin:0 auto;padding:0 18px 24px;color:#9ca3af;font-size:11px}
+    code{background:#eef2ff;border:1px solid #e5e7eb;border-radius:8px;padding:2px 6px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="app">
-    <!-- LADO ESQUERDO: MENU / RELATÓRIOS -->
-    <aside class="sidebar">
-      <div class="logo-area">
-        <div class="logo-tag">Portal Power BI</div>
-        <div class="logo-title">
-          <div class="logo-badge">BI</div>
-          Indicadores Corporativos
-        </div>
-        <div class="logo-subtitle">
-          Selecione um painel para visualizar os dashboards.
-        </div>
-      </div>
+  <header>
+    <div class="tag">Facilitador de links</div>
+    <h1>Hub de Painéis (Power BI)</h1>
+    <p>
+      Esta página só organiza os acessos. Ao clicar, você será direcionado ao Power BI.
+      Se você já estiver logado, abre direto; caso contrário, o Power BI vai pedir login.
+    </p>
+  </header>
 
-      <div>
-        <div class="section-title">Painéis principais</div>
-        <div class="report-list">
-          <!-- TROQUE data-url PELOS LINKS REAIS DO POWER BI -->
-          <button
-            class="report-btn active"
-            data-url="https://app.powerbi.com/view?r=SEU_LINK_DO_RELATORIO_1"
-            data-name="Comercial - Vendas"
-          >
-            <span class="report-title">Comercial – Vendas</span>
-            <span class="report-desc">
-              Faturamento, margem e ranking de clientes.
-            </span>
-          </button>
+  <main>
+    <div class="grid">
 
-          <button
-            class="report-btn"
-            data-url="https://app.powerbi.com/view?r=SEU_LINK_DO_RELATORIO_2"
-            data-name="Estoque & Logística"
-          >
-            <span class="report-title">Estoque &amp; Logística</span>
-            <span class="report-desc">
-              Giro, cobertura e rupturas por filial.
-            </span>
-          </button>
-
-          <button
-            class="report-btn"
-            data-url="https://app.powerbi.com/view?r=SEU_LINK_DO_RELATORIO_3"
-            data-name="Financeiro & Recebíveis"
-          >
-            <span class="report-title">Financeiro &amp; Recebíveis</span>
-            <span class="report-desc">
-              Inadimplência, aging e carteira em aberto.
-            </span>
-          </button>
+      <div class="card">
+        <div class="title">PBI_GRUPO_HARA</div>
+        <div class="desc">Visão geral corporativa / consolidado.</div>
+        <div class="btnrow">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/">Abrir Power BI</a>
         </div>
       </div>
 
-      <div>
-        <div class="section-title">Outros</div>
-        <div class="report-list">
-          <button
-            class="report-btn"
-            data-url="https://app.powerbi.com/view?r=SEU_LINK_DO_RELATORIO_4"
-            data-name="Barter & Derivativos"
-          >
-            <span class="report-title">Barter &amp; Derivativos</span>
-            <span class="report-desc">
-              Contratos, hedge e resultado financeiro.
-            </span>
-          </button>
+      <div class="card">
+        <div class="title">PBI_MARGEM_AGRICOLA</div>
+        <div class="desc">Margem agrícola, performance e cortes.</div>
+        <div class="btnrow">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/c6355af6a11d49695201?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/">Abrir Power BI</a>
         </div>
       </div>
 
-      <div class="sidebar-footer">
-        <span>Última atualização: <strong>automática via Power BI</strong></span>
-        <span>Os filtros e páginas são controlados dentro do próprio relatório.</span>
-      </div>
-    </aside>
-
-    <!-- LADO DIREITO: IFRAME DO POWER BI -->
-    <main class="main">
-      <div class="main-header">
-        <div class="main-titles">
-          <div class="main-title" id="current-report-name">
-            Comercial – Vendas
-          </div>
-          <div class="main-subtitle">
-            Navegue pelos relatórios utilizando o menu à esquerda.
-          </div>
-        </div>
-
-        <div class="pill">
-          <span class="pill-dot"></span>
-          <span>Conectado ao Power BI Service</span>
+      <div class="card">
+        <div class="title">PBI_VET_MSD</div>
+        <div class="desc">Resultados da vertical Vet / MSD.</div>
+        <div class="btnrow">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">Abrir relatório</a>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://app.powerbi.com/">Abrir Power BI</a>
         </div>
       </div>
 
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Visualização do Painel</div>
-            <div class="card-subtitle">
-              Use os filtros, abas e interações diretamente no relatório embutido.
-            </div>
-          </div>
-          <div class="card-actions">
-            <!-- Botão apenas informativo / futuro: abrir em nova aba -->
-            <button class="card-btn" id="open-new-tab">
-              <span>🔗</span> Abrir em nova aba
-            </button>
-          </div>
-        </div>
+    </div>
+  </main>
 
-        <div class="iframe-wrapper">
-          <!-- O SRC inicial é o do primeiro botão marcado como "active" -->
-          <iframe
-            id="pbiFrame"
-            src="https://app.powerbi.com/view?r=SEU_LINK_DO_RELATORIO_1"
-            allowfullscreen="true"
-          ></iframe>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script>
-    // Pega todos os botões de relatório
-    const reportButtons = document.querySelectorAll(".report-btn");
-    const iframe = document.getElementById("pbiFrame");
-    const currentReportName = document.getElementById("current-report-name");
-    const openNewTabBtn = document.getElementById("open-new-tab");
-
-    let currentUrl = iframe.src;
-
-    // Função para trocar de relatório
-    function selectReport(button) {
-      const url = button.getAttribute("data-url");
-      const name = button.getAttribute("data-name") || "Relatório Power BI";
-
-      // Atualiza iframe
-      iframe.src = url;
-      currentUrl = url;
-
-      // Atualiza título
-      currentReportName.textContent = name;
-
-      // Atualiza estado visual dos botões
-      reportButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-    }
-
-    // Adiciona evento de clique a cada botão
-    reportButtons.forEach((button) => {
-      button.addEventListener("click", () => selectReport(button));
-    });
-
-    // Botão "Abrir em nova aba"
-    openNewTabBtn.addEventListener("click", () => {
-      if (currentUrl) {
-        window.open(currentUrl, "_blank");
-      }
-    });
-  </script>
+  <footer>
+    Dica: se quiser reduzir atrito, oriente o time a marcar “manter conectado” no login do Microsoft 365.
+    Este hub não guarda senhas e não altera permissões.
+  </footer>
 </body>
 </html>
