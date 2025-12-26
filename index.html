@@ -49,7 +49,7 @@
       z-index:1;
     }
 
-    /* HEADER (mantendo logo) */
+    /* HEADER */
     header{
       max-width:1200px;
       margin:0 auto;
@@ -111,6 +111,7 @@
       gap:14px;
     }
 
+    /* CARD COMO LINK INTEIRO */
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -121,6 +122,9 @@
       gap:8px;
       box-shadow:0 2px 6px rgba(15,23,42,0.03);
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      text-decoration:none;
+      color:inherit;
+      cursor:pointer;
     }
 
     .card:hover{
@@ -175,10 +179,8 @@
       font-size:12px;
       font-weight:600;
       color:#15803d;
-      text-decoration:none;
       white-space:nowrap;
     }
-
     .card-link span{
       margin-left:4px;
       font-size:11px;
@@ -223,47 +225,54 @@
     </div>
     <div class="cards">
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f/6ba47188795ce6267086?experience=power-bi">
         <div class="title">Vendas (Agrícola e Veterinária)</div>
         <div class="desc">
           Acompanhamento de vendas, faturamento e metas de sell-out das verticais Agrícola e Veterinária.
         </div>
         <div class="card-footer">
           <span class="tag">Agrícola</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/ad0d22ba-e701-4ede-a52b-39d33d10e19f/6ba47188795ce6267086?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/95a564a92eeddb7c7e79?experience=power-bi">
         <div class="title">Margem Comercial – Vertical Agrícola</div>
         <div class="desc">
           Apuração de margem por filial, grupo, subgrupo, fornecedor e cliente.
         </div>
         <div class="card-footer">
           <span class="tag">Agrícola</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/2f97e0b1-1813-4737-9518-570dc20f0e5e/95a564a92eeddb7c7e79?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/68cbe3af-ed43-4451-96b0-77427497b339/c9731144a07da00e2b3a?experience=power-bi">
         <div class="title">Operações Barter</div>
         <div class="desc">
           Acompanhamento de contratos, volumes e resultados financeiros das operações barter.
         </div>
         <div class="card-footer">
           <span class="tag">Agrícola</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/68cbe3af-ed43-4451-96b0-77427497b339/c9731144a07da00e2b3a?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
+
+      <!-- ONE PAGE AGORA NA CATEGORIA AGRÍCOLA -->
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/f004efe4-a1d8-4262-903f-423186b94e61/fe61bff41b154edc2466?experience=power-bi">
+        <div class="title">Fornecedores – One Page</div>
+        <div class="desc">
+          Apuração de compras e acompanhamento de campanhas de rebate.
+        </div>
+        <div class="card-footer">
+          <span class="tag">Agrícola</span>
+          <span class="card-link">Abrir painel <span>↗</span></span>
+        </div>
+      </a>
 
     </div>
   </section>
@@ -276,72 +285,52 @@
     </div>
     <div class="cards">
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">
         <div class="title">Veterinária MSD – Vendas e Margem</div>
         <div class="desc">
           Análise de vendas, margem e apuração de metas de sell-in da MSD.
         </div>
         <div class="card-footer">
           <span class="tag vet">Veterinária</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/c6c8d876-12f6-41b4-ae8b-14bc7fa56ccf/3a45406eb71603d49712?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://chatgpt.com/g/g-p-694e962fef4c8191ba8649411bacf599-agrupamento-pbi/c/694e951a-4de8-8330-888c-97cff9168268">
         <div class="title">Veterinária Elanco – Vendas e Margem</div>
         <div class="desc">
           Análise de vendas, margem e apuração de metas de sell-in da Elanco.
         </div>
         <div class="card-footer">
           <span class="tag vet">Veterinária</span>
-          <a class="card-link" target="_blank"
-             href="https://chatgpt.com/g/g-p-694e962fef4c8191ba8649411bacf599-agrupamento-pbi/c/694e951a-4de8-8330-888c-97cff9168268">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
 
-  <!-- FINANCEIRO & FORNECEDORES -->
+  <!-- FINANCEIRO (agora só duplicatas) -->
   <section class="section">
     <div class="section-label">
       <span class="icon">💼</span>
-      Financeiro &amp; Fornecedores
+      Financeiro
     </div>
     <div class="cards">
 
-      <div class="card">
-        <div class="title">Fornecedores – One Page</div>
-        <div class="desc">
-          Apuração de compras e acompanhamento de campanhas de rebate.
-        </div>
-        <div class="card-footer">
-          <span class="tag fin">Financeiro</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/f004efe4-a1d8-4262-903f-423186b94e61/fe61bff41b154edc2466?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/e42ad853-072d-4bdd-84be-e14b3b931f34/reports/ce6e59f6-33bb-4bbe-b334-d3af138c237d/ReportSection32453670953a2d209a6e?experience=power-bi">
         <div class="title">Duplicatas em Aberto</div>
         <div class="desc">
           Painel de controle de duplicatas em aberto e inadimplência.
         </div>
         <div class="card-footer">
           <span class="tag fin">Financeiro</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/e42ad853-072d-4bdd-84be-e14b3b931f34/reports/ce6e59f6-33bb-4bbe-b334-d3af138c237d/ReportSection32453670953a2d209a6e?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -354,19 +343,17 @@
     </div>
     <div class="cards">
 
-      <div class="card">
+      <a class="card" target="_blank"
+         href="https://app.powerbi.com/groups/me/reports/35622400-5ad3-45e1-b08a-b546ac6cbe1d/421bdb9f9b678a65b38a?experience=power-bi">
         <div class="title">Custos Logísticos</div>
         <div class="desc">
           Controle e análise de custos de frete.
         </div>
         <div class="card-footer">
           <span class="tag log">Operações</span>
-          <a class="card-link" target="_blank"
-             href="https://app.powerbi.com/groups/me/reports/35622400-5ad3-45e1-b08a-b546ac6cbe1d/421bdb9f9b678a65b38a?experience=power-bi">
-            Abrir painel <span>↗</span>
-          </a>
+          <span class="card-link">Abrir painel <span>↗</span></span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
