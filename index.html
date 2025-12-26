@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Painéis Corporativos – Agro Hara</title>
+  <title>Central de Painéis Corporativos – Agro Hara</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -21,7 +21,11 @@
       --green:#16a34a;
     }
 
-    /* FUNDO COM IMAGEM AGRÍCOLA (mantido) */
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* FUNDO COM IMAGEM AGRÍCOLA  */
     body{
       color:var(--text);
       min-height:100vh;
@@ -44,7 +48,7 @@
       z-index:0;
     }
 
-    header, main, footer{
+    header, main, footer, nav{
       position:relative;
       z-index:1;
     }
@@ -53,7 +57,7 @@
     header{
       max-width:1200px;
       margin:0 auto;
-      padding:24px 18px 12px;
+      padding:24px 18px 10px;
     }
 
     .brand{
@@ -73,18 +77,60 @@
       margin-top:6px;
     }
 
-    p{
-      margin-top:6px;
+    /* MENU SUPERIOR FIXO */
+    .top-nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.92);
+      border-bottom:1px solid rgba(229,231,235,0.8);
+    }
+
+    .top-nav-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:8px 18px;
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .top-nav-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#9ca3af;
+      margin-right:6px;
+    }
+
+    .top-nav a{
       font-size:13px;
-      color:var(--muted);
-      max-width:900px;
+      text-decoration:none;
+      color:#374151;
+      padding:6px 10px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      transition:background .12s ease,color .12s ease;
+    }
+
+    .top-nav a span.icon{
+      font-size:14px;
+    }
+
+    .top-nav a:hover{
+      background:#e5f9ee;
+      color:#166534;
     }
 
     /* CONTEÚDO PRINCIPAL */
     main{
       max-width:1200px;
       margin:0 auto;
-      padding:0 18px 32px;
+      padding:10px 18px 32px;
     }
 
     .section{
@@ -201,6 +247,9 @@
     @media (max-width:640px){
       .cards{grid-template-columns:1fr}
       .brand-logo{height:30px}
+      .top-nav-inner{
+        gap:8px;
+      }
     }
   </style>
 </head>
@@ -211,14 +260,32 @@
   <div class="brand">
     <img class="brand-logo" src="logo-hara.png" alt="Agro Hara">
   </div>
-  <h1>Hub de Painéis Corporativos – Agro Hara</h1>
-  <p>Indicadores estratégicos para apoio à tomada de decisão no agronegócio.</p>
+  <h1>Central de Painéis Corporativos – Agro Hara</h1>
 </header>
+
+<!-- MENU SUPERIOR FIXO -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <span class="top-nav-label">Navegação</span>
+    <a href="#agricola">
+      <span class="icon">📊</span> Painéis Agrícolas
+    </a>
+    <a href="#vet">
+      <span class="icon">🐄</span> Veterinária
+    </a>
+    <a href="#fin">
+      <span class="icon">💼</span> Financeiro
+    </a>
+    <a href="#log">
+      <span class="icon">🚚</span> Logística &amp; Operações
+    </a>
+  </div>
+</nav>
 
 <main>
 
   <!-- AGRÍCOLA -->
-  <section class="section">
+  <section class="section" id="agricola">
     <div class="section-label">
       <span class="icon">🌾</span>
       Agrícola
@@ -261,7 +328,6 @@
         </div>
       </a>
 
-      <!-- ONE PAGE AGORA NA CATEGORIA AGRÍCOLA -->
       <a class="card" target="_blank"
          href="https://app.powerbi.com/groups/me/reports/f004efe4-a1d8-4262-903f-423186b94e61/fe61bff41b154edc2466?experience=power-bi">
         <div class="title">Fornecedores – One Page</div>
@@ -278,7 +344,7 @@
   </section>
 
   <!-- VETERINÁRIA -->
-  <section class="section">
+  <section class="section" id="vet">
     <div class="section-label">
       <span class="icon">🐄</span>
       Veterinária
@@ -312,8 +378,8 @@
     </div>
   </section>
 
-  <!-- FINANCEIRO (agora só duplicatas) -->
-  <section class="section">
+  <!-- FINANCEIRO -->
+  <section class="section" id="fin">
     <div class="section-label">
       <span class="icon">💼</span>
       Financeiro
@@ -336,7 +402,7 @@
   </section>
 
   <!-- LOGÍSTICA & OPERAÇÕES -->
-  <section class="section">
+  <section class="section" id="log">
     <div class="section-label">
       <span class="icon">🚚</span>
       Logística &amp; Operações
